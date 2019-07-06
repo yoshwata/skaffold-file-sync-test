@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-file-sync
+  namespace: default
+  labels:
+    app: sync
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sync
+  template:
+    metadata:
+      labels:
+        app: sync
+    spec:
+      containers:
+      - name: test-file-sync
+        imagePullPolicy: Always
+        image: docker.io/yoshwata/yoshwata_test-file-sync:v0.32.0-88-gf5fa43b3
